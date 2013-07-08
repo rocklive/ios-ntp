@@ -227,8 +227,8 @@
   ┃ associationTrue -- notification from a 'truechimer' association of a trusty offset               ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 - (void) associationTrue:(NSNotification *) notification {
-    NTP_Logging(@"*** true association: %@ (%i left)",
-                    [notification object], [timeAssociations count]);
+    //NTP_Logging(@"*** true association: %@ (%i left)",
+     //               [notification object], [timeAssociations count]);
     [self offsetAverage];
 }
 
