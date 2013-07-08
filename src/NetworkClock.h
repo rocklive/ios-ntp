@@ -20,6 +20,7 @@
     NSTimeInterval          timeIntervalSinceDeviceTime;
 
     NSMutableArray *        timeAssociations;
+    NSString *              server;
 
 @private
     
@@ -28,11 +29,13 @@
     
 }
 
-+ (NetworkClock *) sharedNetworkClock;
++ (NetworkClock *) sharedNetworkClockWithServer:(NSString *)server;
 
+- (NSString *) getServer;
 - (void) createAssociations;
 - (void) reportAssociations;
 - (void) finishAssociations;
+
 
 - (NSDate *) networkTime;
 

@@ -10,11 +10,13 @@
 
 @interface NSDate (NetworkClock)
 
-- (NSTimeInterval) timeIntervalSinceNetworkDate;
-+ (NSTimeInterval) timeIntervalSinceNetworkDate;
 
-+ (NSDate *) networkDate;
-+ (NSDate *) threadsafeNetworkDate;
+
+- (NSTimeInterval) timeIntervalSinceNetworkDateWithServer:(NSString *)server;
++ (NSTimeInterval) timeIntervalSinceNetworkDateWithServer:(NSString *)server;
+
++ (NSDate *) networkDateWithServer:(NSString *)server;
++ (NSDate *) threadsafeNetworkDateWithServer:(NSString *)server;
   // the threadsafe version guards against reading a double that could be
   // potentially being updated at the same time. Since doubles are 8 words,
   // and arm is 32bit, this is not atomic and could provide bad values.

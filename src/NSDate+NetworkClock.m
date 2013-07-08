@@ -4,24 +4,26 @@
 
 @implementation NSDate (NetworkClock)
 
-- (NSTimeInterval) timeIntervalSinceNetworkDate {
-  return [self timeIntervalSinceDate:[NSDate networkDate]];
+
+- (NSTimeInterval) timeIntervalSinceNetworkDateWithServer:(NSString *)server {
+    return [self timeIntervalSinceDate:[NSDate networkDateWithServer:server]];
 }
 
-+ (NSTimeInterval) timeIntervalSinceNetworkDate {
-  return [[self date] timeIntervalSinceNetworkDate];
++ (NSTimeInterval) timeIntervalSinceNetworkDateWithServer:(NSString *)server {
+    return [[self date] timeIntervalSinceNetworkDateWithServer:server];
 }
 
 
-+ (NSDate *) networkDate {
-  return [[NetworkClock sharedNetworkClock] networkTime];
+
++ (NSDate *) networkDateWithServer:(NSString *)server {
+    return [[NetworkClock sharedNetworkClockWithServer:server] networkTime];
 }
 
-+ (NSDate *) threadsafeNetworkDate {
-  NetworkClock *sharedClock = [NetworkClock sharedNetworkClock];
-  @synchronized(sharedClock) {
-    return [sharedClock networkTime];
-  }
++ (NSDate *) threadsafeNetworkDateWithServer:(NSString *)server {
+    NetworkClock *sharedClock = [NetworkClock sharedNetworkClockWithServer:server];
+    @synchronized(sharedClock) {
+        return [sharedClock networkTime];
+    }
 }
 
 
