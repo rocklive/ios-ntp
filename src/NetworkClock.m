@@ -276,13 +276,13 @@
     static NetworkClock *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[NetworkClock alloc] initWithServer:server];
+        sharedInstance = [[self alloc] initWithServer:server];
         
     });
     
     if(![[sharedInstance getServer] isEqualToString:server]) {
         [sharedInstance finishAssociations];
-        sharedInstance = [[NetworkClock alloc] initWithServer:server];
+        sharedInstance = [[self alloc] initWithServer:server];
     }
     
     return sharedInstance;

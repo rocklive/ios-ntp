@@ -186,7 +186,7 @@ static double ntpDiffSeconds(struct ntpTimestamp * start, struct ntpTimestamp * 
   │ .. the server clock was set less than 1 hour ago                                                 │
   │ the packet is trustworthy -- compute and store offset in 8-slot fifo ...                         │
   └──────────────────────────────────────────────────────────────────────────────────────────────────┘*/
-    if ((dispersion > 0.1 && dispersion < 50.0) && (stratum > 0) && (mode == 4) &&
+    if ((dispersion >= 0.0 && dispersion < 50.0) && (stratum > 0) && (mode == 4) &&
         (-[[self dateFromNetworkTime:&ntpServerBaseTime] timeIntervalSinceNow] < 3600.0)) {
         el_time=ntpDiffSeconds(&ntpClientSendTime, &ntpClientRecvTime);     // .. (T4-T1)
         st_time=ntpDiffSeconds(&ntpServerRecvTime, &ntpServerSendTime);     // .. (T3-T2)
